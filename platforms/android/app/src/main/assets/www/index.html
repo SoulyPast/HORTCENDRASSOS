@@ -17,13 +17,14 @@
     <link rel="stylesheet" href="css/icons.css">
     <link rel="stylesheet" href="css/framework7-icons.css">
     <link href="css/framework7-icons.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 </head>
 
 <body>
     <!-- App root element -->
     <div id="app">
-     <div id ="cover">  <img id= "splash" src="Imatges/logo.jpg">  </div> 
+     <div id ="cover">  <img id= "splash" src="Imatges/logo_cendrassos.jpg">  </div> 
         <!-- Your main view, should have "view-main" class -->
         <div class="panel panel-right panel-reveal">
             <div class="view">
@@ -62,7 +63,7 @@
                                 <img src="Imatges/user.png" width="40" height="40" class="lazy lazy-fade-in demo-lazy" />
                             </a>
                         </div>
-                        <div class="title ">Escola d'Hostaleria</div>
+                        <div class="title "><h3 style="font-family: 'Lobster', cursive;">Hort Cendrassos</h3></div>
                         <div class="right">
                             <a href="#" class="link panel-open" data-panel="right">
                                 <img src="Imatges/shopping-cart.png" width="40" height="40" class="lazy lazy-fade-in demo-lazy" />
@@ -80,37 +81,25 @@
                                         <span class="input-clear-button "></span>
                                     </div>
                                     <button type="submit" class="button button-fill  color-gray" id="showList" onclick='showList'>Buscar</button>
+                                    <a href="/info/" class="link"><img src="Imatges/info.png" width="40" height="40" class="lazy lazy-fade-in demo-lazy" />
+                                    </a>
                                     <span class="searchbar-disable-button if-not-aurora">Cancel</span>
+                                    
                                 </div>
+                                
                             </form>
+                            
                         </div>
                     </div>
                 </div>
                 <!-- Bottom Toolbar -->
-                <div class="toolbar toolbar-bottom">
-                    <div class="toolbar-inner">
-                        <!-- Toolbar links -->
-                        <a href="/info/" class="link"><img src="Imatges/info.png" width="40" height="40" class="lazy lazy-fade-in demo-lazy" />
-                        </a>
-                        <a href="/bustia/" class="link"><img src="Imatges/email (1).png" width="40" height="40" class="lazy lazy-fade-in demo-lazy" />
-                        </a>
-                        <a href="/config/" class="link"><img src="Imatges/engranaje.png" width="40" height="40" class="lazy lazy-fade-in demo-lazy" />
-                        </a>
-                    </div>
-                </div>
+             
 
 
                 <!-- SLIDER -->
-                <div class="page-content hide-toolbar-on-scroll">
+              
 
-
-                    <div class="swiper-container searchbar-hide-on-enable" style="border-radius: 4px">
-                        <div class="swiper-wrapper" id="gallery_wrapper">
-                        </div>
-                        <div class="swiper-button-next swiper-button-black"></div>
-                        <div class="swiper-button-prev swiper-button-black"></div>
-                        <!--<div class="swiper-pagination swiper-button-black"></div>-->
-                    </div>
+                <div class="page-content ">
 
                     <!--------------------Carta----------------->
                     <div class="searchbar-backdrop"></div>

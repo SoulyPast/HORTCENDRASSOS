@@ -74,6 +74,18 @@ $$(document).on('page:init', '.page[data-name="login"]', function(e) {
 //JS info
 $$(document).on('page:init', '.page[data-name="info"]', function(e) {
     //Check localstorage variable
+    $$("#buscador").focus(function() {
+        $$("li").css("display", "none");
+        $$("#showList").css("display", "block");
+    });
+    
+    function showList() {
+        $$("li").css("display", "block");
+    }
+    
+    $$("#buscador").focusout(function() {
+        $$("li").css("display", "block");
+    });
     
 });
 
@@ -319,15 +331,7 @@ function generarHome() {
         loop: true,
     });
 
-    var urlnews = "https://humildadbackend.cat/api/news";
-
-    app.request.get(urlnews, function(data) {
-
-        var datanews = JSON.parse(data);
-    for (var i = 0; i < datanews.length; i++){
-        mySwiper.appendSlide('<div class="swiper-slide"><img id="image" src="https://humildadbackend.cat/assets/img/plates/' + datanews[i].image + '"style="width: 100%;display: block; height: 300px;"><div class="texto-encima"><h1>'+datanews[i].title+'</h1><h3>'+datanews[i].content+'</h3></div></div>');
-    }
-    });
+ 
 
     // Dummy items array
     urlproductss="https://humildadbackend.cat/api/products";
@@ -442,14 +446,6 @@ function generarHome() {
                 '</div>' +
                 '<div class="card-content-padding">' +
                 '<h3>{{description}}</h3>' +
-                '<div class="accordion-item">' +
-                '<a href="" class="item-link item-content" style="">' +
-                '<div class="item-inner">' +
-                '<div class="item-title" style="font-size:18px">Al·lèrgens <img src="./allergens.png" style="height: 15px; width:15px; float:right"></div>' +
-                '</div>' +
-                '</a>' +
-                '<div class="accordion-item-content"><p>{{allergens}}</p></div>' +
-                '</div>' +
                 '<h4>Queden {{stock}} unitats</h5>' +
                 '<div class="list no-hairlines-md">' +
                 '<ul style="padding-left : 0 ">' +
@@ -742,6 +738,7 @@ $$("#buscador").focus(function() {
 
 function showList() {
     $$("li").css("display", "block");
+    $$("#buscador").blur();
 }
 
 $$("#buscador").focusout(function() {
