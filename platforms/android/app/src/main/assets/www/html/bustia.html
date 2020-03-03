@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar (Android only) -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- Your app title -->
+    <title>ESCOLA D'HOSTELERIA</title>
+    <!-- Path to Framework7 Library Bundle CSS -->
+    <link rel="stylesheet" href="css/framework7.bundle.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="css/framework7-icons.css">
+    <script src="js/all.js"></script>
+
+</head>
+
+
+<body>
+    <div data-name="bustia" class="page">
+
+
+        <!-- Icones i titol superior -->
+
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner">
+                <div class="left">
+                    <a href="/index/" class="link">
+                        <img src="Imatges/home.png" width="40" height="40" class="lazy lazy-fade-in demo-lazy" />
+                    </a>
+                </div>
+                <div class="title"> ESCOLA D'HOSTELERIA </div>
+            </div>
+        </div>
+
+
+        <!-- Bottom Toolbar -->
+        <div class="toolbar toolbar-bottom">
+            <div class="toolbar-inner">
+                <!-- Toolbar links -->
+                <a href="/info/" class="link"><img src="Imatges/info.png" width="40" height="40" class="lazy lazy-fade-in demo-lazy" />
+                </a>
+                <a href="/bustia/" id="bustia" class="link"><img src="Imatges/email (1).png" width="40" height="40" class="lazy lazy-fade-in demo-lazy" />
+                </a>
+                <a href="/config/" class="link"><img src="Imatges/engranaje.png" width="40" height="40" class="lazy lazy-fade-in demo-lazy" />
+                </a>
+            </div>
+        </div>
+
+        <!-- Scrollable page content -->
+        <div class="page-content pgbustia">
+            <h1 style="text-align: center;">Bústia de Suggeriments</h1>
+            <form class="list form-store-data">
+                <ul>
+                    <li>
+                        <div class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title">Motiu de la consulta</div>
+                                <select name="motiu" id="motiu" style="border: 1px solid grey; border-radius: 2px;">
+                                    <option value="1" selected="selected">Suggerencia</option>
+                                    <option value="2">Queixa</option>
+                                    <option value="3">Qualitat</option>
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title">Assumpte</div>
+                                <div class="item-input-wrap">
+                                    <input type="text" id="assumpte" placeholder="Assumpte" required>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title ">El teu missatge</div>
+                                <div class="item-input-wrap">
+                                    <textarea class="resizable" id="missatge" placeholder="El teu missatge" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">He llegdl,fggldf,df,lit puta mierda i accepto les Polítiques de Privacitat</div>
+                                <div class="item-after">
+                                    <label class="toggle">
+                              <input type="checkbox" name="switch" id="checkpp"><i class="toggle-icon"></i>
+                            </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <button class="col button button-fill color-gray" id="buttEnviar" style="width: 50%; margin: auto;" disabled>Enviar</button>
+            </form>
+
+        </div>
+
+</body>
+
+</html>

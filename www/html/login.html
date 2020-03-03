@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar (Android only) -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- Your app title -->
+    <title>ESCOLA D'HOSTELERIA</title>
+    <!-- Path to Framework7 Library Bundle CSS -->
+    <link rel="stylesheet" href="css/framework7.bundle.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/framework7-icons.css">
+</head>
+
+<body>
+    <!-- App root element -->
+    <div id="app">
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Initial Page, "data-name" contains page name -->
+            <div data-name="login" class="page">
+                <!-- Scrollable page content -->
+                <div class="login-screen-title">
+
+                    <div class="page-content">
+                        <div class="block block-strong">
+                            <p> <img src="Imatges/download.png" width="250" height="120" class="lazy lazy-fade-in demo-lazy" /></p>
+                        </div>
+                    </div>
+                </div>
+                <form>
+                    <div class="list">
+                        <ul>
+                            <li class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">Usuari</div>
+                                    <div class="item-input-wrap">
+                                        <input type="text" name="username" placeholder="Nom d'usuari">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">Contrasenya</div>
+                                    <div class="item-input-wrap">
+                                        <input type="password" name="password" placeholder="Contrasenya">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-content item-input">
+
+                            </li>
+                        </ul>
+                        <div class="block">
+                            <div class="row"></div>
+                            <a type="button" href="/index/" class="col button button-raised button-fill button-round button color-blue" style="width: 100%; margin: auto;">
+                                      LOGIN
+                                        </a>
+                            <a id="pwdLose" style="margin:auto; padding-top: 1em;">He oblidat la contrasenya :(</a>
+                        </div>
+                    </div>
+            </div>
+
+            </form>
+            <form class="list form-store-data" style="display: none;" id="pwdForm">
+                <ul>
+                    <li>
+                        <div class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">Name</div>
+                                <div class="item-input-wrap">
+                                    <input type="text" name="name" placeholder="Your name">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">E-mail</div>
+                                <div class="item-input-wrap">
+                                    <input type="email" name="email" placeholder="E-mail">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a type="button" id="pwdSend" class="col button button-raised button-fill button-round button color-green" style="width: 50%; margin: auto;">
+                                RECUPERAR
+                                </a>
+            </form>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- Path to Framework7 Library Bundle JS-->
+    <script type="text/javascript" src="js/framework7.bundle.min.js">
+    </script>
+
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/app.js"></script>
+</body>
+
+</html>
