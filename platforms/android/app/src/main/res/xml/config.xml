@@ -7,7 +7,7 @@
     <feature name="Keyboard">
         <param name="android-package" onload="true" value="org.apache.cordova.labs.keyboard.Keyboard" />
     </feature>
-    <name>HelloCordova</name>
+    <name>CendraHort</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
@@ -22,6 +22,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <icon src="/www/Imatges/Cendrasos.png" />
     <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
 </widget>

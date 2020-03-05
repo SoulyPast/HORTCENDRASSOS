@@ -62,7 +62,7 @@ $$(document).on('page:init', '.page[data-name="login"]', function(e) {
 
     //Boto recuperar passwd
     $$(document).on('click', '#pwdSend', function(e) {
-        alert("Enviat dins de inici js login");
+        app.dialog.alert("S'ha enviat un correu amb la nova contrasenya a l'email associat a aquest nom d'usuari");
     });
 
     $$(document).on('click', '#pwdLose', function(e) {
@@ -74,18 +74,7 @@ $$(document).on('page:init', '.page[data-name="login"]', function(e) {
 //JS info
 $$(document).on('page:init', '.page[data-name="info"]', function(e) {
     //Check localstorage variable
-    $$("#buscador").focus(function() {
-        $$("li").css("display", "none");
-        $$("#showList").css("display", "block");
-    });
-    
-    function showList() {
-        $$("li").css("display", "block");
-    }
-    
-    $$("#buscador").focusout(function() {
-        $$("li").css("display", "block");
-    });
+
     
 });
 
@@ -185,106 +174,13 @@ $$(document).on('page:init', '.page[data-name="bustia"]', function(e) {
         var us1 = $$('#usReg').val();
         var ps1 = $$('#psReg').val();
 
-      //  app.request.postJSON('https://humildadbackend.cat/api/users/' + us1, { username: us1, password: ps1 }, function(data) {
-       //     console.log(data);
-       // });
-
-
-        /* if (((us == 'Test1') && (pass == '1234')) || ((us == us1) && (pass == ps1))) {
-             app.dialog.alert('Benvingut estimat ' + us);
-             app.loginScreen.close('#my-login-screen');
-             $$("body").addClass("islogin");
-         } else {
-             app.dialog.alert('Username And Password unCorrect!');
-         }*/
-
     });
 
 
 });
 
 
-//JS Bustia/
-/*$$(document).on('page:init', '.page[data-name="bustia"]', function(e) {
 
-    //Boto enviar
-    $$(document).on('click', '#buttEnviar', function(e) {
-        var motiu = $$("#motiu").val();
-        var assumpte = $$("#assumpte").val();
-        var missatge = $$("#missatge").val();
-
-        if (assumpte == '' || missatge == '') {
-            app.dialog.alert('No pots deixar camps buits.');
-        } else {
-            app.dialog.alert('El missatge a sigut enviat.');
-        }
-
-        $$("#checkpp").prop('checked', false);
-        $$('#buttEnviar').prop('disabled', true);
-        $$('#buttEnviar').removeClass("color-blue");
-        $$('#buttEnviar').addClass("color-gray");
-
-
-    });
-
-
-    
-
-//EN QUAN SE ENTRA A BUSTIA EL CHECKBOX ES POSA INSTANTANEAMENT EN OFF
-    $$(document).on('click', '#buttEnviar', function(e) {
-        $$("#checkpp").prop("checked", false);
-    });
-
-
-    //EN QUAN SE ENTRA A BUSTIA EL CHECKBOX ES POSA INSTANTANEAMENT EN OFF
-    $$(document).on('click', '#bustia', function(e) {
-        $$("#checkpp").prop("checked", false);
-        $$('#buttEnviar').prop('disabled', true);
-        $$('#buttEnviar').removeClass("color-blue");
-        $$('#buttEnviar').addClass("color-gray");
-    });
-
-    //Boto politica privacitat
-    $$(document).on('click', '#checkpp', function(e) {
-        var check = $$("#checkpp").is(':checked');
-
-        if (!check) { //DESACTIVAT
-            $$('#buttEnviar').prop('disabled', true);
-            $$('#buttEnviar').removeClass("color-blue");
-            $$('#buttEnviar').addClass("color-gray");
-
-        } else { //ACTIVAT
-            $$('#buttEnviar').removeAttr("disabled");
-            $$('#buttEnviar').removeClass("color-gray");
-            $$('#buttEnviar').addClass("color-blue");
-        }
-
-    });
-
-    $$('#my-login-screen .login-button').on('click', function() {
-        var us = $$('#my-login-screen [name="username"]').val();
-        var pass = $$('#my-login-screen [name="password"]').val();
-    
-        var us1 = $$('#usReg').val();
-        var ps1 = $$('#psReg').val();
-
-        app.request.postJSON('https://humildadbackend.cat/api/users/'+us1, { username:us1, password: ps1 }, function (data) {
-        console.log(data);
-        });
-
-
-       /* if (((us == 'Test1') && (pass == '1234')) || ((us == us1) && (pass == ps1))) {
-            app.dialog.alert('Benvingut estimat ' + us);
-            app.loginScreen.close('#my-login-screen');
-            $$("body").addClass("islogin");
-        } else {
-            app.dialog.alert('Username And Password unCorrect!');
-        }*/
-    
-   // });
-
-
-///});
 
 
 //Número de unidades en el carrito
@@ -304,6 +200,19 @@ $$(document).on('page:init', '.page[data-name="home"]', function(e) {
 generarHome();
 
 function generarHome() {
+    $$("#buscador").hide();
+    $$("#buscador").focus(function() {
+        $$("li").css("display", "none");
+        $$("#showList").css("display", "block");
+    });
+    
+    function showList() {
+        $$("li").css("display", "block");
+    }
+    
+    $$("#buscador").focusout(function() {
+        $$("li").css("display", "block");
+    });
     refreshBadge(0);
 
     var mySwiper = new Swiper('.swiper-container', {
@@ -332,13 +241,21 @@ function generarHome() {
     });
 
  
+    var urlnews = "https://humildadbackend.cat/api/news";
+
+    app.request.get(urlnews, function(data) {
+
+        var datanews = JSON.parse(data);
+        for (var i = 0; i < datanews.length; i++) {
+            mySwiper.appendSlide('<div class="swiper-slide"><img id="image" src="https://humildadbackend.cat/assets/img/plates/' + datanews[i].image + '"style="width: 100%;display: block; height: 300px;"><div class="texto-encima"><h1>' + datanews[i].title + '</h1><h3>' + datanews[i].content + '</h3></div></div>');
+        }
+    });
 
     // Dummy items array
     urlproductss="https://humildadbackend.cat/api/products";
     app.request.get(urlproductss, function(data) {
 
         var dataproducts = JSON.parse(data);
-        console.log(dataproducts);
     });
     
     
@@ -350,7 +267,6 @@ function generarHome() {
      app.request.get(urlproducts, function(data) {
 
         $$(document).on('click', '.card', function(e) {
-            console.log('Click a la carta');
             $$("#buscador").blur();
 
         })
@@ -365,7 +281,10 @@ function generarHome() {
             hideOnEnableEl: '.searchbar-hide-on-enable',
             hideOnSearchEl: '.searchbar-hide-on-search',
             createUl: 'false',
-            scrollableParentEl: '#tienda',
+            rowsAfter: 10,
+            setListHeight: true,
+            scrollableParentEl: '.simple-list',
+            updatableScroll: false,
             // Custom search function for searchbar
             searchAll: function(query, items) {
                 var found = [];
@@ -376,61 +295,7 @@ function generarHome() {
                 return found; //return array with mathced indexes
             },
 
-            // List item Template7 template
-        /* itemTemplate: '<li>' +
-            '<div class="card card-expandable data-backdrop="false" style="border-radius:4px">' +
-            '<div class="card-content">' +
-            '<div class="tarjExp" style="background-image: linear-gradient( rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(https://humildadbackend.cat/assets/img/plates/{{image}})">' +
-            '<div class="flexT card-header text-color-white" style="width: 100%">' +
-            '<p id="name{{id}}">{{name}}</p>' +
-            '<p id="price{{id}}">{{price}} €</p>' +
-            '</div>' +
-            '<a href="#" class="link card-close card-opened-fade-in color-white seout" style="position: absolute; right: 15px; top: 15px">' +
-            '<i class="icon f7-icons">multiply_circle_fill</i>' +
-            '</a>' +
-            '</div>' +
-            '<div class="card-content-padding">' +
-            '<h3>{{description}}</h3>' +
-            '<div class="accordion-item">'+
-                '<a href="" class="item-link item-content" style="">'+
-                '<div class="item-inner">'+
-                '<div class="item-title">Al·lèrgens <img src="./allergens.png" style="height: 15px; width:15px; float:right"></div>'+
-                '</div>'+
-                '</a>'+
-                '<div class="accordion-item-content"><p>{{allergens}}</p></div>'+
-            '</div>'+
-            '<h5>Queden {{stock}} unitats</h5>' +
-            '<div class="list no-hairlines-md">' +
-            '<ul style="padding-left : 0 ">' +
-            '<li>' +
-            '<div class="item-content item-input">' +
-            '<div class="item-inner">' +
-            '<div class="item-input-wrap" style="display:flex">' +
-            '<input class="date" type="text" placeholder="Data de recollida" style="text-align:center; border: 1px solid black; border-radius:2px; flex-grow: 3; margin-right: 5px" readonly="readonly" id="demo-calendar-modal{{id}}" />' +
-            '<div class="col">' +
-            '<div class="stepper stepper-init color-gray" id="stepper{{id}}"> ' +
-                '<div class="stepper-button-minus color-gray"></div>' +
-                '<div class="stepper-input-wrap">' +
-                '<input type="text" value="1" min="1" max="{{stock}}" step="1"  id="units{{id}}" readonly> ' +
-                '</div>' +
-                '<div class="stepper-button-plus"></div>' +
-            '</div>' +
-            '</div>' +
-            '<br>' +
-            '</div>' +
-            '</div>' +
-            '</li>' +
-            '</ul>' +
-            '</div>' +
-            '<button  onclick="add2bsk({{id}}, {{price}}, ' + "'" + "Imatges/{{image}}" + "'" + ')" class="col button button-fill color-green">Encarregar</button>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</li>',
-
-        });*/
-
-         //stepper
+           
         
          itemTemplate: '<li>' +
                 '<div class="card card-expandable data-backdrop="false" style="border-radius:4px">' +
@@ -477,7 +342,6 @@ function generarHome() {
 
         });
 
-        //    console.log(dataproducts);
         for (let i = 0; i < dataproducts.length; i++) {
             var dat = dataproducts[i].dateini;
             var hola = new Date(dat);
@@ -504,12 +368,13 @@ function generarHome() {
                 el: '#stepper' + dataproducts[i].id,
                 on: {
                   change: function () {
-                    //console.log('Stepper value changed')
+                    
                   }
                 }
               })
 
         }
+        $$("#buscador").show();
     });
      $$(document).on('click', '.card', function(e) {
         $$(".card-backdrop").css("z-index", "0");
@@ -546,7 +411,7 @@ function add2bsk(id, p, img) {
     if (w3 == "" || w4 == "") {
         app.dialog.alert("Falta la data de recollida o la quantitat de productes que vol encarregar!");
     } else {
-        app.dialog.alert("El producte s'ha afegit al carrito");
+        app.dialog.alert("El producte s'ha afegit a la cistella");
         app.card.close('.card-opened', false);
         refreshBadge(1);
         total += (p * w4);
@@ -594,44 +459,38 @@ function deleteItems(id, price) {
         
     });
     order.User = localStorage.getItem('id');
-    console.log(JSON.stringify(order));
+
     $$('#total').text("TOTAL: " + total + " €");
 }
 
-/*$(document).ready(function() {
-    $('.date').on('change', function() {
-        console.log('You selected - ' + $(this).val())
-    })
-})*/
+
 
 // Login Screen Demo
 $$('#my-login-screen .login-button').on('click', function() {
     var us = $$('#my-login-screen [name="username"]').val();
     var pass = $$('#my-login-screen [name="password"]').val();
 
-    //var us1 = $$('#usReg').val();
-    //var ps1 = $$('#psReg').val();
+   
 
     app.request.postJSON('https://humildadbackend.cat/api/users?user='+ us +'&password='+pass, function (data) {
-        console.log(data);
+        
         
         if (data.auth===true) {
             window.localStorage.setItem('id',data.id);
-            //order.User = data.id;
-            console.log("localstorege"+localStorage.getItem('id'));
+          
             
             window.localStorage.setItem('email',data.email);
-            app.dialog.alert('Benvingut estimat ' + us);
+            app.dialog.alert('Benvingut/da ' + us);
             window.localStorage.setItem('login',us);
-            //alert(window.localStorage.getItem('login'));
+          
             window.localStorage.setItem('password',pass);
-            //alert(window.localStorage.getItem('password'));
+            
             var user=localStorage.getItem('login');
-            console.log(user);
+          
             $$('#user').attr("value", localStorage.getItem('login'));
             
            app.loginScreen.close('#my-login-screen');
-           // $$("body").addClass("islogin");
+          
             $$('#btnlogin').css("display","none");
             $$('#btnlogout').css("display","block");
             
@@ -686,10 +545,11 @@ $$('.fnlbsk').on('click', function() {
     });
 
     if (localStorage.getItem('login')!=null) {
-        app.dialog.alert("Ordre Realitzat");
-        //$$(".bsket_viw").remove();
-        //$$(".badge").html(0);
-        //app.tab.show("#view-catalog");
+        app.dialog.alert("Comanda Processada");
+       $$(".badge").html(0);
+        $$("#carrito").remove();
+       $$('#total').text("TOTAL: " + 0 + " €");
+
         var order = new Order();
         order.Items = [];
         $("#carrito li").each(function(index, element) {
@@ -703,12 +563,8 @@ $$('.fnlbsk').on('click', function() {
             
         });
         order.User = localStorage.getItem('id');
-        app.request.promise.post('https://humildadbackend.cat/api/orders', { order })
-        .then(function (res) {
-            $$('.login').html(res.data);
-            console.log('Load was performed');
-        });
-        console.log(JSON.stringify(order));
+       
+       
 
 
     } else {
@@ -720,7 +576,16 @@ $$('.fnlbsk').on('click', function() {
 
 //Boto recuperar passwd
 $$(document).on('click', '#pwdSend', function(e) {
-    alert("Enviat dins de inici js login");
+    if($$("#nomusuari").val()!=""){
+        app.dialog.alert("S'ha enviat un correu amb la nova contrasenya a l'email associat a aquest nom d'usuari");
+        $$("#nomusuari").remove();
+        $$("#pwdForm").css("display", "none");
+        total = 0;
+    }
+    else{
+        app.dialog.alert("No has introduït el nom d'usuari");
+    }
+    
 });
 
 $$(document).on('click', '#pwdLose', function(e) {
@@ -775,6 +640,8 @@ $$("#buscador").focusout(function() {
 
   app.request.get(urlproducts, function(data) {
     $$("#cover").hide();
+    $$("#buscador").show();
+    
     });
 
     function Items() {

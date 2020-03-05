@@ -24,19 +24,19 @@
 <body>
     <!-- App root element -->
     <div id="app">
-     <div id ="cover">  <img id= "splash" src="Imatges/logo_cendrassos.jpg">  </div> 
+     <div id ="cover">  <img id= "splash" src="Imatges/Cendrasos.png">  </div> 
         <!-- Your main view, should have "view-main" class -->
         <div class="panel panel-right panel-reveal">
             <div class="view">
                 <div class="page">
                     <div class="navbar">
                         <div class="navbar-inner" style="display: flex; justify-content: center; background-color:#b2e093">
-                            <h3>El teu encarrec</h3>
+                            <h3>El teu encàrrec</h3>
                         </div>
                     </div>
                     <div class="page-content hide-toolbar-on-scroll comanda">
                         <div class="block comanda">
-                            <div class="bsket_viw list media-list">
+                            <div class="bsket_viw  lista list media-list">
                                 <ul id="carrito">
                                 </ul>
                             </div>
@@ -63,7 +63,7 @@
                                 <img src="Imatges/user.png" width="40" height="40" class="lazy lazy-fade-in demo-lazy" />
                             </a>
                         </div>
-                        <div class="title "><h3 style="font-family: 'Lobster', cursive;">Hort Cendrassos</h3></div>
+                        <div class="title "><img src="Imatges/Cendrasos.png" width="100%" height="40" class="lazy lazy-fade-in demo-lazy" /></div>
                         <div class="right">
                             <a href="#" class="link panel-open" data-panel="right">
                                 <img src="Imatges/shopping-cart.png" width="40" height="40" class="lazy lazy-fade-in demo-lazy" />
@@ -80,7 +80,7 @@
                                         <i class="searchbar-icon"></i>
                                         <span class="input-clear-button "></span>
                                     </div>
-                                    <button type="submit" class="button button-fill  color-gray" id="showList" onclick='showList'>Buscar</button>
+                                    <button type="submit" class="button button-fill  color-gray" id="showList" onclick='showList'>Cercar</button>
                                     <a href="/info/" class="link"><img src="Imatges/info.png" width="40" height="40" class="lazy lazy-fade-in demo-lazy" />
                                     </a>
                                     <span class="searchbar-disable-button if-not-aurora">Cancel</span>
@@ -96,10 +96,17 @@
              
 
 
-                <!-- SLIDER -->
-              
+                    <!-- SLIDER -->
+                    <div class="page-content hide-toolbar-on-scroll">
 
-                <div class="page-content ">
+
+                    <div class="swiper-container searchbar-hide-on-enable" style="border-radius: 4px">
+                        <div class="swiper-wrapper" id="gallery_wrapper">
+                        </div>
+                        <div class="swiper-button-next swiper-button-black"></div>
+                        <div class="swiper-button-prev swiper-button-black"></div>
+                        <!--<div class="swiper-pagination swiper-button-black"></div>-->
+                    </div>
 
                     <!--------------------Carta----------------->
                     <div class="searchbar-backdrop"></div>
@@ -126,7 +133,6 @@
                 <div class="page">
                     <div class="navbar">
                         <div class="navbar-inner">
-                            <div class="title" style="left:0 !important;">Account</div>
                             <div class="right" style="right:0 !important;background-color:#c32d3b;width:50px;color:#fff;">
                                 <a href="#" onclick="app.loginScreen.close('#my-login-screen');" class="link" style="color: black;">
                                     X
@@ -135,22 +141,22 @@
                         </div>
                     </div>
                     <div class="page-content login-screen-content">
-                        <div class="login-screen-title">Login</div>
+                        <div class="login-screen-title">Iniciar Sessió</div>
                         <div class="list">
                             <ul>
                                 <li class="item-content item-input">
                                     <div class="item-inner">
-                                        <div class="item-title item-label">Username</div>
+                                        <div class="item-title item-label">Nom d'usuari</div>
                                         <div class="item-input-wrap">
-                                            <input type="text" id="user" name="username" placeholder="Your username" value="">
+                                            <input type="text" id="user" name="username" placeholder="El teu nom d'usuari" value="">
                                         </div>
                                     </div>
                                 </li>
                                 <li class="item-content item-input">
                                     <div class="item-inner">
-                                        <div class="item-title item-label">Password</div>
+                                        <div class="item-title item-label">Contrasenya</div>
                                         <div class="item-input-wrap">
-                                            <input type="password" id="password" name="password" placeholder="Your password" value="">
+                                            <input type="password" id="password" name="password" placeholder="La teva contrasenya" value="">
                                         </div>
                                     </div>
                                 </li>
@@ -162,10 +168,10 @@
                             align-items: center;">
                                 <li>
                                     <button class=" login-button col button button-fill color-green" id="btnlogin" style=""
-                                    >Login</button>
+                                    >Iniciar Sessió</button>
                                 </li>
                                 <li>
-                                    <button type="submit" class=" col button button-fill color-red" id="btnlogout" style="">Logout</button>
+                                    <button type="submit" class=" col button button-fill color-red" id="btnlogout" style="">Tancar Sessió</button>
                                 </li>
                                 <li>
                                     <div class="row"><a id="pwdLose" style="margin:auto; padding-top: 1em;">He oblidat la contrasenya :(</a></div>
@@ -179,19 +185,9 @@
                                 <li>
                                     <div class="item-content item-input">
                                         <div class="item-inner">
-                                            <div class="item-title item-label">Name</div>
+                                            <div class="item-title item-label">Nom d'usuari</div>
                                             <div class="item-input-wrap">
-                                                <input type="text" name="name" placeholder="Your name" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="item-content item-input">
-                                        <div class="item-inner">
-                                            <div class="item-title item-label">E-mail</div>
-                                            <div class="item-input-wrap">
-                                                <input type="email" name="email" placeholder="E-mail" required>
+                                                <input type="text" id="nomusuari" name="name" placeholder="El teu nom d'usuari" required>
                                             </div>
                                         </div>
                                     </div>
