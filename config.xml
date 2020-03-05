@@ -23,5 +23,5 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <icon src="/www/Imatges/Cendrasos.png"/>
+    <icon src="/www/Imatges/logoMin.png"/>
 </widget>

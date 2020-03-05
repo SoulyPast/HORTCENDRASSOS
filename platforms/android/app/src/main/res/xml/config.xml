@@ -22,7 +22,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <icon src="/www/Imatges/Cendrasos.png" />
+    <icon src="/www/Imatges/logoMin.png" />
     <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
 </widget>

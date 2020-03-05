@@ -5,7 +5,7 @@ var app = new Framework7({
     swipePanel: 'left',
     root: '#app',
     // App Name
-    name: "ESCOLA D'HOSTELERIA",
+    name: "HORT CENDRASSOS",
     // App id
     id: 'com.myapp.test',
     // Enable swipe panel
@@ -334,7 +334,7 @@ function generarHome() {
                 '</li>' +
                 '</ul>' +
                 '</div>' +
-                '<button  onclick="add2bsk({{id}}, {{price}}, ' + "'" + "https://humildadbackend.cat/assets/img/plates/{{image}}" + "'" + ')" class="col button button-fill color-green" style="height: 55px; margin-top: 10px; font-size:18px">Encarregar</button>' +
+                '<button  onclick="add2bsk({{id}}, {{price}}, ' + "'" + "https://humildadbackend.cat/assets/img/plates/{{image}}" + "'" + '); document.getElementById(' + "'demo-calendar-modal{{id}}'" + ').value=' + "''; document.getElementById(" + "'units{{id}}'" + ').value=' + "1" + '" class="col button button-fill color-green" style="height: 55px; margin-top: 10px; font-size:18px">Encarregar</button>' +
                 '</div>' +
                 '</div>' +
                 '</div>' +
@@ -448,7 +448,7 @@ function deleteItems(id, price) {
     $$(id).remove();
     var order = new Order();
     order.Items = [];
-    $("#carrito li").each(function(index, element) {
+    $$("#carrito li").each(function(index, element) {
                   
         var it = new Item($$(element).find(".informacio").attr('id'),
             $$(element).find(".cant-items > .tc").text(),
@@ -547,9 +547,10 @@ $$('.fnlbsk').on('click', function() {
     if (localStorage.getItem('login')!=null) {
         app.dialog.alert("Comanda Processada");
        $$(".badge").html(0);
-        $$("#carrito").remove();
        $$('#total').text("TOTAL: " + 0 + " €");
-
+        $$('#carrito').empty();
+        vl=0;
+        total=0;
         var order = new Order();
         order.Items = [];
         $("#carrito li").each(function(index, element) {
